@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.5s ease;
+            background: #111;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #5f27cd);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .color-code {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Random Color Generator</h1>
+        <button>Click to Change Color</button>
+        <div class="color-code">rgb(0, 0, 0)</div>
+    </div>
+
+</body>
+
+<script>
+    let btn = document.querySelector("button")
+    let colorText = document.querySelector(".color-code")
+
+    btn.addEventListener("click", () => {
+        let red = Math.ceil(Math.random() * 255)
+        let green = Math.ceil(Math.random() * 255)
+        let blue = Math.ceil(Math.random() * 255)
+
+        let color = `rgb(${red}, ${green}, ${blue})`
+
+        document.body.style.backgroundColor = color
+        colorText.textContent = color
+    })
+</script>
+</html>
